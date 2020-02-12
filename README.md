@@ -1,6 +1,6 @@
 # Code Click to Copy
 
-> Click anywhere within <pre> code tags to automatically copy to clipboard.
+> Click anywhere within `<pre>` and `code` tags to automatically copy to clipboard.
 
 A simple little plugin that automatically copies content in `<pre>` and `<code>` tags to clipboard (when clicked). Other plugins out there do the same but create a little [COPY] button that you have to aim for. With mine, you don’t have to aim your mouse or finger at any button, simply click anywhere on the code block and it copies the whole thing.
 
