@@ -4,7 +4,7 @@
  * Description: Click anywhere within <pre> code tags to automatically copy to clipboard.
  * Author:      WPJohnny
  * Author URI: https://wpjohnny.com/
- * Version:     0.1.0
+ * Version:     0.1.1
  */
 
 add_action('wp_footer', 'codecopy_activate');

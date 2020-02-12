@@ -4,7 +4,7 @@ Donate link: https://wordpress.org/plugins/code-click-to-copy/
 Tags: code, copy
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 
 Copies `<pre>` and `<code>` tags automatically to clipboard.
 
@@ -20,6 +20,9 @@ With all the guides out there sharing code-commands, especially on this site, it
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 0.1.1 =
+* Fix parsin error on readme.txt file.
 
 = 0.1.0 =
 * Initial Release
