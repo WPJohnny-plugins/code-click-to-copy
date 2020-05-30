@@ -3,7 +3,7 @@ Contributors: treeflips
 Donate link: https://wordpress.org/plugins/code-click-to-copy/
 Tags: code, copy
 Requires at least: 4.9
-Tested up to: 5.3
+Tested up to: 5.4.1
 Stable tag: 0.1.2
 
 Copies `<pre>` and `<code>` tags automatically to clipboard.
