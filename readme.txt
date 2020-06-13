@@ -5,6 +5,7 @@ Tags: code, copy
 Requires at least: 4.9
 Tested up to: 5.4.1
 Stable tag: 0.1.2
+License: GPL-2.0+
 
 Copies `<pre>` and `<code>` tags automatically to clipboard.
 
