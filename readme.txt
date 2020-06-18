@@ -1,7 +1,7 @@
 === Code Click to Copy ===
 Contributors: treeflips
 Donate link: https://wordpress.org/plugins/code-click-to-copy/
-Tags: code, copy
+Tags: code, copy, pre, html, syntax
 Requires at least: 4.9
 Tested up to: 5.4.1
 Stable tag: 0.1.2
