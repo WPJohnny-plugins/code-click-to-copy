@@ -1,9 +1,11 @@
 <?php
 /**
  * Plugin Name: Code Click-to-Copy by WPJohnny
+ * Plugin URI: https://wpjohnny.com/code-click-to-copy/
  * Description: Click anywhere within <pre> code tags to automatically copy to clipboard.
  * Author:      WPJohnny
  * Author URI: https://wpjohnny.com/
+ * Donate link: https://www.paypal.me/wpjohnny
  * Version:     0.1.2
  */
 
