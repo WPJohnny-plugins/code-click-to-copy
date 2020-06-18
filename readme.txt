@@ -1,6 +1,6 @@
 === Code Click to Copy ===
 Contributors: treeflips
-Donate link: https://wordpress.org/plugins/code-click-to-copy/
+Donate link: https://www.paypal.me/wpjohnny
 Tags: code, copy, pre, html, syntax
 Requires at least: 4.9
 Tested up to: 5.4.1
