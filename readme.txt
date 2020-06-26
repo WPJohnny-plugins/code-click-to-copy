@@ -34,7 +34,7 @@ Not unless someone wanted to pay for my development time and costs. This was int
 = How do I style the copy block? =
 You can style the "codecopy_tooltip" CSS class. Change background, color, font-family, font-size, padding, word-wrap, overflow, etc. I might add this option in the plugin one day but just trying to keep it lightweight for now.
 
-= Are there any known incompatibility issues? =
+= Any known incompatibility issues? =
 
 One user reported it didn't work on his DIVI site through DIVI's own "code" block mechanism.
 
