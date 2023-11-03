@@ -3,10 +3,10 @@
  * Plugin Name: Code Click-to-Copy by WPJohnny
  * Plugin URI: https://wpjohnny.com/code-click-to-copy/
  * Description: Click anywhere within <pre> code tags to automatically copy to clipboard.
- * Author:      WPJohnny
+ * Author:      WPJohnny, Chouffy
  * Author URI: https://wpjohnny.com/
  * Donate link: https://www.paypal.me/wpjohnny
- * Version:     0.1.2
+ * Version:     0.1.3
  */
 
 add_action('wp_footer', 'codecopy_activate');
@@ -22,15 +22,20 @@ function codecopy_activate(){
 	}
 
 	function codecopy_apply(element) {
-		element.addEventListener("click", function() {
-			event.stopPropagation();
-			const el = document.createElement('textarea');
-			el.value = element.textContent;
-			document.body.appendChild(el);
-			el.select();
-			document.execCommand('copy');
-			document.body.removeChild(el);
-			codecopy_tooltip.innerHTML = 'Copied!'
+		let drag = false;
+		element.addEventListener('mousedown', () => drag = false);
+		element.addEventListener('mousemove', () => drag = true);
+		element.addEventListener('mouseup', function() {
+			if (!drag) {
+				event.stopPropagation();
+				const el = document.createElement('textarea');
+				el.value = element.textContent;
+				document.body.appendChild(el);
+				el.select();
+				document.execCommand('copy');
+				document.body.removeChild(el);
+				codecopy_tooltip.innerHTML = 'Copied!'
+			}			
 		});
 		element.addEventListener("mouseover", function() {
 			event.stopPropagation();
