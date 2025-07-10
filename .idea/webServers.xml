@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dd77d23e-a99c-4460-8736-abd2338a53ac" name="code_click_plugin_Solveddoc">
+        <fileTransfer accessType="SFTP" host="46.4.121.188" port="22" sshConfigId="d8a1f987-263d-42d3-96ac-5808960b218e" sshConfig="stagi5811@46.4.121.188:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

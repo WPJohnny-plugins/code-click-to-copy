@@ -4,16 +4,23 @@ Donate link: https://www.paypal.me/wpjohnny
 Tags: code, copy, pre, html, syntax
 Requires at least: 4.9
 Tested up to: 6.8
-Stable tag: 0.1.5
+Stable tag: 1.0.0
 License: GPL-2.0+
 
-Copies `<pre>` and `<code>` tags automatically to clipboard.
+Copies `<pre>` and `<code>` tags automatically to clipboard with customizable tooltips.
 
 == Description ==
 
-Simple plugin that automatically copies content in `<pre>` and `<code>` tags to clipboard (when clicked). Other plugins out there do the same but create a little [COPY] button that you have to aim for. Mine doesn't require any aiming, just click anywhere on the code block and it copies the whole thing.
+Simple plugin that automatically copies content in `<pre>` and `<code>` tags to clipboard (when clicked). Other plugins out there do the same but create a little [COPY] button that you have to aim for. Mine doesn't require any aiming, just click anywhere on the code block and it copies the whole thing. Customizable hover tooltip lets you know it's copied.
 
-For any sites sharing code-commands, this plugin will save users time from having to highlight and copy-paste bits of text back and forth. It's especially helpful for large globs of code that scroll off-screen, or when copying on your mobile phone.
+For sites sharing code-commands, this plugin will save users time from having to highlight and copy-paste bits of text back and forth. It's especially helpful for large globs of code that scroll off-screen, or when copying on your mobile phone. I've added more features to make it more helpful.
+
+**Features:**
+* Easy aim - click anywhere on text block to copy entire text, no need to aim for tiny text or clipboard icon.
+* Tooltip text customization - change tooltip text.
+* Tooltip color options - customize tooltip background and text colors.
+* Tooltip hover custom CSS - completely restyle the tooltip hover.
+* Tooltip function custom CSS - apply tooltip function to other CSS classes. Allowing copy function on any content block, not only code blocks.
 
 == Installation ==
 
@@ -32,7 +39,13 @@ No. It's coded extremely lightweight. The plugin CSS and JS is only 1.7KB total,
 Not unless someone wanted to pay for my development time and costs. This was intended as a free community plugin. 
 
 = How do I style the copy block? =
-You can style the "codecopy_tooltip" CSS class. Change background, color, font-family, font-size, padding, word-wrap, overflow, etc. I might add this option in the plugin one day but just trying to keep it lightweight for now.
+You can customize the tooltip through the admin settings at Settings > Code Click to Copy. You can change:
+* Tooltip background and text colors
+* Custom tooltip text messages
+* Apply copy function to other CSS classes
+* Custom tooltip CSS class for advanced styling
+
+For advanced CSS customization, you can style the "codeCopyTooltip" CSS class or your custom class.
 
 = Any known incompatibility issues? =
 
@@ -42,6 +55,18 @@ One user reported it didn't work on his DIVI site through DIVI's own "code" bloc
 1. Click anywhere on the text to copy. Little box at top-left lets you know it's copied! (show image of once clicked!)
 
 == Changelog ==
+= 1.0.0 =
+* Major version release - no longer beta
+* Added comprehensive customization options
+* Tooltip background and text color customization
+* Custom tooltip text messages
+* Custom CSS class support for tooltip styling
+* Custom CSS class support for applying copy function to other elements
+* Modern clipboard API with fallback support
+* Improved positioning and styling
+* Admin settings page for easy customization
+* Tested with WordPress 6.8
+
 = 0.1.5 =
 * Tested with WordPress 6.8. Updated version number to reflect compatibility with latest WordPress version.
 
