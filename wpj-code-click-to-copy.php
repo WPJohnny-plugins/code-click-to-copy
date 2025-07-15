@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Code Click-to-Copy by WPJohnny
  * Plugin URI: https://wpjohnny.com/code-click-to-copy/
- * Description: Simple plugin that automatically copies content in pre and code tags to clipboard (when clicked). Other plugins out there do the same but create a little [COPY] button that you have to aim for. Mine doesn't require any aiming, just click anywhere on the code block and it copies the whole thing. Customizable hover tooltip lets you know it's copied.
+ * Description: Simple plugin that automatically copies content in pre and code tags to clipboard (when clicked). Other plugins out there do the same but create a little [COPY] button that you have to aim for. Mine doesn't require any aiming, just click anywhere on the code block and it copies the whole thing. Customizable hover tooltip lets you know it's copied. Added comprehensive I18N support and translation improvements.
  *
  * For sites sharing code-commands, this plugin will save users time from having to highlight and copy-paste bits of text back and forth. It's especially helpful for large globs of code that scroll off-screen, or when copying on your mobile phone. I've added more features to make it more helpful.
  *
@@ -13,8 +13,9 @@
  * - Tooltip hover custom CSS - completely restyle the tooltip hover.
  * - Tooltip function custom CSS - apply tooltip function to other CSS classes. Allowing copy function on any content block, not only code blocks.
  * Author: <a href="https://wpjohnny.com">WPJohnny</a>
+ * Text Domain: code-click-to-copy
  * Donate link: https://www.paypal.me/wpjohnny
- * Version:     1.0.0
+ * Version:     1.0.1
  */
 
 /**
@@ -25,7 +26,7 @@
 
 add_action( 'init', 'codeClickToCopyLoadTextdomain' );
 function codeClickToCopyLoadTextdomain() {
-    load_plugin_textdomain( 'click_to_copy', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+    load_plugin_textdomain( 'code-click-to-copy', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
 // Add admin menu
@@ -33,7 +34,7 @@ add_action('admin_menu', 'code_click_to_copy_admin_menu');
 function code_click_to_copy_admin_menu() {
     add_submenu_page(
         'options-general.php', // Parent slug (Settings)
-        'Code Click to Copy Settings',
+        __('Code Click to Copy Settings', 'code-click-to-copy'),
         'Code Click to Copy',
         'manage_options',
         'code-click-to-copy',
@@ -50,7 +51,7 @@ function code_click_to_copy_settings_init() {
 
     add_settings_section(
         'code_click_to_copy_section',
-        'Tooltip Customizations',
+        __('Tooltip Customizations', 'code-click-to-copy'),
         'code_click_to_copy_section_callback',
         'code-click-to-copy'
     );
@@ -58,7 +59,7 @@ function code_click_to_copy_settings_init() {
     // 1. Tooltip Background Color
     add_settings_field(
         'tooltip_background',
-        'Tooltip Background Color',
+        __('Tooltip Background Color', 'code-click-to-copy'),
         'tooltip_background_callback',
         'code-click-to-copy',
         'code_click_to_copy_section'
@@ -67,7 +68,7 @@ function code_click_to_copy_settings_init() {
     // 2. Tooltip Text Color
     add_settings_field(
         'tooltip_text_color',
-        'Tooltip Text Color',
+        __('Tooltip Text Color', 'code-click-to-copy'),
         'tooltip_text_color_callback',
         'code-click-to-copy',
         'code_click_to_copy_section'
@@ -76,7 +77,7 @@ function code_click_to_copy_settings_init() {
     // 3. Tooltip Copy Text
     add_settings_field(
         'click_to_copy_text',
-        'Tooltip Copy Text',
+        __('Tooltip Copy Text', 'code-click-to-copy'),
         'click_to_copy_text_callback',
         'code-click-to-copy',
         'code_click_to_copy_section'
@@ -85,7 +86,7 @@ function code_click_to_copy_settings_init() {
     // 4. Tooltip Copied Text
     add_settings_field(
         'copied_text',
-        'Tooltip Copied Text',
+        __('Tooltip Copied Text', 'code-click-to-copy'),
         'copied_text_callback',
         'code-click-to-copy',
         'code_click_to_copy_section'
@@ -94,7 +95,7 @@ function code_click_to_copy_settings_init() {
     // 5. Tooltip Hover CSS Class
     add_settings_field(
         'tooltip_custom_class',
-        'Tooltip Hover CSS Class',
+        __('Tooltip Hover CSS Class', 'code-click-to-copy'),
         'tooltip_custom_class_callback',
         'code-click-to-copy',
         'code_click_to_copy_section'
@@ -103,7 +104,7 @@ function code_click_to_copy_settings_init() {
     // 6. Tooltip Function CSS Class
     add_settings_field(
         'custom_css_class',
-        'Tooltip Function CSS Class',
+        __('Tooltip Function CSS Class', 'code-click-to-copy'),
         'custom_css_class_callback',
         'code-click-to-copy',
         'code_click_to_copy_section'
@@ -124,7 +125,7 @@ function tooltip_background_callback() {
     echo '<div style="display:flex;align-items:center;gap:10px;">';
     echo '<input type="color" name="code_click_to_copy_settings[tooltip_background]" value="' . esc_attr($background) . '" style="width:50px;height:30px;">';
     echo '<input type="text" class="hex-input" value="' . esc_attr($background) . '" style="width:100px;" placeholder="#000000">';
-    echo ' <a href="#" class="reset-color" data-default="#333333">Reset</a>';
+    echo ' <a href="#" class="reset-color" data-default="#333333">' . esc_html__('Reset', 'code-click-to-copy') . '</a>';
     echo '</div>';
 }
 
@@ -138,27 +139,27 @@ function tooltip_text_color_callback() {
     echo '<div style="display:flex;align-items:center;gap:10px;">';
     echo '<input type="color" name="code_click_to_copy_settings[tooltip_text_color]" value="' . esc_attr($text_color) . '" style="width:50px;height:30px;">';
     echo '<input type="text" class="hex-input" value="' . esc_attr($text_color) . '" style="width:100px;" placeholder="#000000">';
-    echo ' <a href="#" class="reset-color" data-default="#ffffff">Reset</a>';
+    echo ' <a href="#" class="reset-color" data-default="#ffffff">' . esc_html__('Reset', 'code-click-to-copy') . '</a>';
     echo '</div>';
 }
 
 function click_to_copy_text_callback() {
     $options = get_option('code_click_to_copy_settings');
     $val = isset($options['click_to_copy_text']) ? $options['click_to_copy_text'] : '';
-    echo '<input type="text" name="code_click_to_copy_settings[click_to_copy_text]" value="' . esc_attr($val) . '" placeholder="Click to Copy (default)" />';
+    echo '<input type="text" name="code_click_to_copy_settings[click_to_copy_text]" value="' . esc_attr($val) . '" placeholder="' . esc_attr__('Click to Copy (default)', 'code-click-to-copy') . '" />';
 }
 
 function copied_text_callback() {
     $options = get_option('code_click_to_copy_settings');
     $val = isset($options['copied_text']) ? $options['copied_text'] : '';
-    echo '<input type="text" name="code_click_to_copy_settings[copied_text]" value="' . esc_attr($val) . '" placeholder="Copied! (default)" />';
+    echo '<input type="text" name="code_click_to_copy_settings[copied_text]" value="' . esc_attr($val) . '" placeholder="' . esc_attr__('Copied! (default)', 'code-click-to-copy') . '" />';
 }
 
 function tooltip_custom_class_callback() {
     $options = get_option('code_click_to_copy_settings');
     $val = isset($options['tooltip_custom_class']) ? $options['tooltip_custom_class'] : 'codeCopyTooltip';
-    echo '<input type="text" name="code_click_to_copy_settings[tooltip_custom_class]" value="' . esc_attr($val) . '" placeholder="e.g. my-tooltip-class" />';
-    echo '<br><small style="color:#666;">Use default <code>codeCopyTooltip</code> class, or restyle tooltip hover with your own.</small>';
+    echo '<input type="text" name="code_click_to_copy_settings[tooltip_custom_class]" value="' . esc_attr($val) . '" placeholder="' . esc_attr__('e.g. my-tooltip-class', 'code-click-to-copy') . '" />';
+    echo '<br><small style="color:#666;">' . sprintf(esc_html__('Use default %1$scodeCopyTooltip%2$s class, or restyle tooltip hover with your own.', 'code-click-to-copy'),'<code>','</code>') . '</small>';
 }
 
 function custom_css_class_callback() {
@@ -168,8 +169,8 @@ function custom_css_class_callback() {
     } else {
         $custom_class = 'code, pre';
     }
-    echo '<input type="text" name="code_click_to_copy_settings[custom_css_class]" value="' . esc_attr($custom_class) . '" placeholder="e.g. my-copy-class,another-class" />';
-    echo '<br><small style="color:#666;">Enter class names (without dot or spaces) to apply tooltip function, separate by comma if multiple. Can add to, or replace existing default class <code>code, pre</code>.</small>';
+    echo '<input type="text" name="code_click_to_copy_settings[custom_css_class]" value="' . esc_attr($custom_class) . '" placeholder="' . esc_attr__('e.g. my-copy-class,another-class', 'code-click-to-copy') . '" />';
+    echo '<br><small style="color:#666;">' . sprintf(esc_html__('Enter class names (without dot or spaces) to apply tooltip function, separate by comma if multiple. Can add to, or replace existing default class %1$scode%2$s, %1$spre%2$s.', 'code-click-to-copy'),'<code>','</code>') . '</small>';
 }
 
 
@@ -185,11 +186,11 @@ function code_click_to_copy_settings_page() {
             <?php
             settings_fields('code_click_to_copy');
             do_settings_sections('code-click-to-copy');
-            submit_button('Save Settings');
+            submit_button(esc_html__('Save Settings', 'code-click-to-copy'));
             ?>
         </form>
         <p style="margin-top:30px; color:#555;">
-            Like this plugin? <a href="https://www.paypal.me/wpjohnny" target="_blank">Buy me a beer</a> or <a href="https://wordpress.org/plugins/comment-reply-email/" target="_blank">leave a 5-star review</a>.
+            <?php printf(esc_html__( 'Like this plugin? %1$sBuy me a beer%2$s or %3$sleave a 5-star review%2$s.', 'code-click-to-copy' ),'<a href="https://www.paypal.me/wpjohnny" target="_blank">','</a>','<a href="https://wordpress.org/support/plugin/code-click-to-copy/reviews/#new-post" target="_blank">'); ?>
         </p>
     </div>
     <?php
@@ -199,8 +200,8 @@ add_action('wp_footer', 'codeCopyActivate');
 add_action('admin_footer', 'codeCopyActivate');
 function codeCopyActivate(){
     $options = get_option('code_click_to_copy_settings');
-    $clickToCopyStr = isset($options['click_to_copy_text']) && $options['click_to_copy_text'] !== '' ? $options['click_to_copy_text'] : __('Click to Copy', 'click_to_copy');
-    $copiedMessage = isset($options['copied_text']) && $options['copied_text'] !== '' ? $options['copied_text'] : __('Copied!', 'click_to_copy');
+    $clickToCopyStr = isset($options['click_to_copy_text']) && $options['click_to_copy_text'] !== '' ? $options['click_to_copy_text'] : __('Click to Copy', 'code-click-to-copy');
+    $copiedMessage = isset($options['copied_text']) && $options['copied_text'] !== '' ? $options['copied_text'] : __('Copied!', 'code-click-to-copy');
     $tooltip_bg = isset($options['tooltip_background']) ? $options['tooltip_background'] : '#333333';
     $tooltip_text = isset($options['tooltip_text_color']) ? $options['tooltip_text_color'] : '#ffffff';
     if (isset($options['custom_css_class'])) {
