@@ -197,8 +197,12 @@ function code_click_to_copy_settings_page() {
 }
 
 add_action('wp_footer', 'codeCopyActivate');
-add_action('admin_footer', 'codeCopyActivate');
 function codeCopyActivate(){
+    // Only run on frontend, not in admin areas
+    if (is_admin()) {
+        return;
+    }
+    
     $options = get_option('code_click_to_copy_settings');
     $clickToCopyStr = isset($options['click_to_copy_text']) && $options['click_to_copy_text'] !== '' ? $options['click_to_copy_text'] : __('Click to Copy', 'code-click-to-copy');
     $copiedMessage = isset($options['copied_text']) && $options['copied_text'] !== '' ? $options['copied_text'] : __('Copied!', 'code-click-to-copy');
