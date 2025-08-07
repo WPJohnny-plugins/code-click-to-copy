@@ -2,20 +2,18 @@
 /**
  * Plugin Name: Code Click-to-Copy by WPJohnny
  * Plugin URI: https://wpjohnny.com/code-click-to-copy/
- * Description: Simple plugin that automatically copies content in pre and code tags to clipboard (when clicked). Other plugins out there do the same but create a little [COPY] button that you have to aim for. Mine doesn't require any aiming, just click anywhere on the code block and it copies the whole thing. Customizable hover tooltip lets you know it's copied. Added comprehensive I18N support and translation improvements.
- *
- * For sites sharing code-commands, this plugin will save users time from having to highlight and copy-paste bits of text back and forth. It's especially helpful for large globs of code that scroll off-screen, or when copying on your mobile phone. I've added more features to make it more helpful.
- *
- * Features:
- * - Easy aim - click anywhere on text block to copy entire text, no need to aim for tiny text or clipboard icon.
- * - Tooltip text customization - change tooltip text.
- * - Tooltip color options - customize tooltip background and text colors.
- * - Tooltip hover custom CSS - completely restyle the tooltip hover.
- * - Tooltip function custom CSS - apply tooltip function to other CSS classes. Allowing copy function on any content block, not only code blocks.
+ * Description: Click anywhere on pre and code tags to automatically copy to clipboard. No aiming required - just click anywhere on the code block.
+ * Version: 1.0.1
+ * Requires at least: 5.0
+ * Tested up to: 6.4
+ * Requires PHP: 7.0
  * Author: <a href="https://wpjohnny.com">WPJohnny</a>
+ * Author URI: https://wpjohnny.com
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: code-click-to-copy
  * Donate link: https://www.paypal.me/wpjohnny
- * Version:     1.0.1
+ * Network: false
  */
 
 /**
